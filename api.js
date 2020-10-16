@@ -26,8 +26,8 @@ var dbInfo = {
     password:'buackr!!##',
     database: 'BU',
     multipleStatements: true
+    
 }
-
 
 var connection = mysql.createConnection({
     host : dbInfo.host,
@@ -35,8 +35,7 @@ var connection = mysql.createConnection({
     password : dbInfo.password,
     database : dbInfo.database
 });
-
-    connection.connect();
+   connection.connect();
     connection.query('SELECT * FROM sensor_data ', function (error, results, fields) {
         if (error) {
             console.log(error);
@@ -81,8 +80,9 @@ api.post('/insSensor', (req, res, next) => {
     var sensorValue = req.body.sensorValue;//"";
     var userId = req.body.userId; //"";
     
-    var sql = " insert into sensor_data (sensor_type, sensor_value, sensor_user, ins_date) values ";
-    sql += " ('"+ sensorType +"', "+ sensorValue +", '"+ userId +"', now() , now()) ";
+    var sql = " insert into sensor_data (sensor_type, sensor_value, sensor_user, ins_date ) values ";
+    
+    sql += " ('"+ sensorType +"', "+ sensorValue +", '"+ userId +"', now() ) ";
     console.log(sql);
     connection.connect();
 
