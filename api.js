@@ -51,6 +51,7 @@ api.get('/hello2', (req, res, next) => {
         pId = req.query.id;
     }
 
+    
     res.send("510호 강의실 시설 좋아요"+ pId);
 });
 // post
