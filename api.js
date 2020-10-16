@@ -28,11 +28,12 @@ var dbInfo = {
     multipleStatements: true
 }
 
+
 var connection = mysql.createConnection({
     host : dbInfo.host,
     user : dbInfo.user,
     password : dbInfo.password,
-    database : dbInfo,database
+    database : dbInfo.database
 });
 
     connection.connect();
