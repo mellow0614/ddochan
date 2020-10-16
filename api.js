@@ -96,6 +96,7 @@ api.post('/insSensor', (req, res, next) => {
 
 });
 
+
 //Query String
 // ex) http://localhost/api/echo?param1=123&param2=321
 api.get('/query_echo', (req, res, next) => {
@@ -104,3 +105,4 @@ api.get('/query_echo', (req, res, next) => {
 
 
 module.exports = api;
+
