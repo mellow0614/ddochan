@@ -12,7 +12,7 @@ const serverPort = 80;
 //웹페이지의 세부 주소를 지정한다.
 server.use('/',            require('./server'));
 server.use('/api',         require('./api'));
-
+server.use('/dc',         require('./dc'));
 /************* Running server **************/
 const httpServer = http.createServer(server);
 httpServer.listen(serverPort, () => {
