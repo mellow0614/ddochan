@@ -1,6 +1,7 @@
 //엄격한 코드 검사
 'use strict';
 
+const { json } = require('body-parser');
 /************* include library **************/
 var express = require('express');
 var mysql   = require('mysql');
@@ -37,9 +38,10 @@ var connection = mysql.createConnection({
         }
 
         console.log(results);
+        res.send(results);
     });
     connection.end();    
-    res.send("Welcome is API Fucntion");
+    
 });
 
 /************* Routing **************/
