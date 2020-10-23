@@ -35,17 +35,22 @@ var connection = mysql.createConnection({
     password : dbInfo.password,
     database : dbInfo.database
 });
-   connection.connect();
+    connection.connect();
     connection.query('SELECT * FROM sensor_data ', function (error, results, fields) {
         if (error) {
             console.log(error);
         }
 
         console.log(results);
+        res.send(results);
     });
     connection.end();    
-    res.send("Welcome is API Fucntion");
+   
+    
+    
 });
+
+   
 
 /************* Routing **************/
 //api Index
