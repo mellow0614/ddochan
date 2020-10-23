@@ -39,6 +39,7 @@ var connection = mysql.createConnection({
 
         console.log(results);
         res.send(results);
+        
     });
     connection.end();    
     
