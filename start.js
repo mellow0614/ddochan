@@ -13,6 +13,7 @@ const serverPort = 80;
 server.use('/',            require('./server'));
 server.use('/api',         require('./api'));
 server.use('/dc',         require('./dc'));
+server.use('/client',       require('./client'));
 /************* Running server **************/
 const httpServer = http.createServer(server);
 httpServer.listen(serverPort, () => {
