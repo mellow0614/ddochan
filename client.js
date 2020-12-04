@@ -11,6 +11,8 @@ server.set('views', path.join(__dirname, '/web'));
 server.set('view engine', 'ejs');
 server.engine('html', require('ejs').renderFile);
 
+server.use(express.static(__dirname + '/node_modules/startbootstrap-sb-admin-2'))
+
 /************* Routing **************/
 //client Index
 server.get('/', (req, res, next) => {
