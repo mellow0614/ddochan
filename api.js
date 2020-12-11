@@ -80,13 +80,9 @@ api.post('/hello', (req, res, next) => {
     res.send("백석대학교 :"+ pId + "정보는? ");
 });
 
-api.post('/insSensor', (req, res, next) => {
+api.get('/insSensor', (req, res, next) => {
 
-    var sensorType = req.body.sensorType;// "";
-    var sensorValue = req.body.sensorValue;//"";
-    var userId = req.body.userId; //"";
-    
-    var sql = " insert into sensor_data (sensor_type, sensor_value, sensor_user, ins_date ) values ";
+    var sql = " insert into sensor_data (sensor_type, sensor_value, sensor_user, ins_values ) values ('"+ req.query.sensorType + "'," + req.query.sensorValue + "'," + req.query.userId+"', now() )";
     
     sql += " ('"+ sensorType +"', "+ sensorValue +", '"+ userId +"', now() ) ";
     console.log(sql);
@@ -100,7 +96,7 @@ api.post('/insSensor', (req, res, next) => {
         res.send(results);
     })
 
-});
+;
 
 
 //Query String
