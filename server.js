@@ -17,7 +17,7 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 server.use(express.static(path.join(__dirname, '/web')));
 
-
+ 
 /************* Routing **************/
 
 //intro
