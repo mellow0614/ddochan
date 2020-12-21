@@ -5,7 +5,7 @@ const http    = require('http');
 const express = require('express');
 const server  = express();
 
-const serverPort = 3744;
+const serverPort = 3000;
 
 
 /************* Routing **************/
@@ -14,6 +14,8 @@ server.use('/',            require('./server'));
 server.use('/api',         require('./api'));
 server.use('/dc',         require('./dc'));
 server.use('/client',       require('./client'));
+server.use('/insSensor',       require('./insSensor'));
+
 /************* Running server **************/
 const httpServer = http.createServer(server);
 httpServer.listen(serverPort, () => {

@@ -8,7 +8,7 @@ var api     = express();
 
 
 var connection = mysql.createConnection({
-    host     : 'ls-4ab94082220316df9f6805e2cb989baaea4e9715.cu0xyssgzj43.ap-northeast-2.rds.amazonaws.com',
+    host     : 'ls-712a3de0f216372c332622b5ed5c6f22fe2f67bd.cu0xyssgzj43.ap-northeast-2.rds.amazonaws.com',
     user     : 'dbmasteruser',
     password : 'angksehwjsqq',
     database : 'BU'
@@ -19,17 +19,17 @@ var connection = mysql.createConnection({
 api.get('/', (req, res, next) => {
 
 
-var dbInfo = {
+/*var dbInfo = {
 
     host: 'ls-712a3de0f216372c332622b5ed5c6f22fe2f67bd.cu0xyssgzj43.ap-northeast-2.rds.amazonaws.com',
     port: '3306',
     user: 'dbmasteruser',
-    password:'buackr!!##',
+    password:'angksehwjsqq',
     database: 'BU',
     multipleStatements: true
     
 }
-
+*/
 var connection = mysql.createConnection({
     host : dbInfo.host,
     user : dbInfo.user,
@@ -80,13 +80,40 @@ api.post('/hello', (req, res, next) => {
     res.send("백석대학교 :"+ pId + "정보는? ");
 });
 
-api.get('/insSensor', (req, res, next) => {
+/*api.post('/insSensor', (req, res, next) => {
+    
+    var sensorType = req.query.sensorType;// "";
+    var sensorValue = req.query.sensorValue;//"";
+    var userId = req.query.userId; //"";
+    
 
-    var sql = " insert into sensor_data (sensor_type, sensor_value, sensor_user, ins_values ) values ('"+ req.query.sensorType + "'," + req.query.sensorValue + "'," + req.query.userId+"', now() )";
+    var sql = " insert into sensor_data (sensor_type, sensor_value, sensor_user, ins_values ) values ('"+ req.query.sensorType + "," + req.query.sensorValue + "," + req.query.userId+"', now() )";
     
     sql += " ('"+ sensorType +"', "+ sensorValue +", '"+ userId +"', now() ) ";
     console.log(sql);
-    connection.connect();
+    //connection.connect();
+
+    console.log("init start");
+    connection.query(sql , function(error, results, fields){
+
+        console.log(error);
+        console.log(results);
+        res.send(results);
+    })
+});
+*/
+
+api.get('/insSensor', (req, res, next) => {
+
+    var sensorType = req.query.sensorType;// "";
+    var sensorValue = req.query.sensorValue;//"";
+    var userId = req.query.userId; //"";
+
+    var sql = " insert into sensor_data (sensor_type, sensor_value, ins_date  , sensor_user  ) values ('"+ req.query.sensorType + "'," + req.query.sensorValue + ", now() ,'" + req.query.userId+"' )";
+    
+    //sql += " ('"+ sensorType +"', "+ sensorValue +", '"+ userId +"', now() ) ";
+    console.log(sql);
+  //  connection.connect();
 
     console.log("init start");
     connection.query(sql , function(error, results, fields){
@@ -96,8 +123,7 @@ api.get('/insSensor', (req, res, next) => {
         res.send(results);
     })
 
-;
-
+});
 
 //Query String
 // ex) http://localhost/api/echo?param1=123&param2=321
